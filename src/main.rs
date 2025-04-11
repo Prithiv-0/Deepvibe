@@ -3,6 +3,10 @@
 #[allow(unused_variables)]
 use std::io::{self, Write};
 use std::process::Command;
+use std::env;
+use std::path::PathBuf;
+use dirs;
+
 
 fn main() {
 
@@ -10,6 +14,18 @@ fn main() {
     let stdin = io::stdin();
     let mut stdout = io::stdout();    
     let mut input = String::new();
+
+    
+    // Get script path from env or default
+    let script_path = env::var("DEEPVIBE_SCRIPT_PATH")
+        .map(PathBuf::from)
+        .unwrap_or_else(|_| {
+            let mut path = dirs::data_local_dir().unwrap();
+            path.push("deepvibe/script.py");
+            path
+        });
+
+
     loop{
         print!("$ ");
         stdout.flush().unwrap();
@@ -62,7 +78,7 @@ fn main() {
                 };
 
                 let status = Command::new("python3")
-                    .arg("/home/Prithiv/codes/rust/deepvibe/scripts/script.py")
+                    .arg(&script_path)
                     .arg(input_file)
                     .arg(output_file)
                     .status()

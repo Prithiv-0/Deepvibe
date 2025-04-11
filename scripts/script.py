@@ -55,7 +55,7 @@ def extract_code_from_response(response):
 
 def call_openrouter_api(code, language, instruction):
     api_url = "https://openrouter.ai/api/v1/chat/completions"
-    headers = {"Authorization": "Bearer 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"}
+    headers = {"Authorization": "Bearer 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"}
     payload = {
         "model": "openai/gpt-3.5-turbo",
         "messages": [{"role": "user", "content": f"{instruction}\n\n```{language}\n{code}\n```"}]
