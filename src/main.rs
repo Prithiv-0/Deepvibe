@@ -57,7 +57,7 @@ fn main() {
 
             //help 
             "help" => {
-                println!("help");
+                println!("Usage:\n1.deepai <input_file> --modify\n2.deepai <input_file> --newfile <output_file>");
             },
             
             //Deepai 
