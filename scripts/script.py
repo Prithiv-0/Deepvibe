@@ -54,10 +54,10 @@ def extract_code_from_response(response):
     return '\n\n'.join(code_blocks) if code_blocks else response
 
 def call_openrouter_api(code, language, instruction):
-    api_url = "https://openrouter.ai/api/v1/chat/completions"
-    headers = {"Authorization": "Bearer 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"}
+    api_url = ""
+    headers = {"Authorization": "Bearer "}
     payload = {
-        "model": "openai/gpt-3.5-turbo",
+        "model": "",
         "messages": [{"role": "user", "content": f"{instruction}\n\n```{language}\n{code}\n```"}]
     }
     response = requests.post(api_url, headers=headers, data=json.dumps(payload))
